@@ -10,5 +10,5 @@ class Receita(Base):
     author = Column(String)
     date = Column(Date)
     time = Column(Time)
-    ingredients = Column(JSON)  # ou JSON, se quiser lista
+    ingredients = Column(String)  # ou JSON, se quiser lista
     is_active = Column(Boolean, default=True)
