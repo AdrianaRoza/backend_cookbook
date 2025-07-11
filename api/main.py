@@ -17,11 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(receitas.router)
+
 @app.on_event("startup")
 async def on_startup():
     await create_tables()  # cria as tabelas na inicialização
-
-app.include_router(receitas.router)
 
 @app.get("/")
 async def root():

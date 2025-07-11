@@ -18,6 +18,7 @@ async def create_receita(request_body: ReceitaCreate, db: AsyncSession):
         date=request_body.date,
         time=request_body.time,
         ingredients=ingredientes,
+        category=request_body.category,
         is_active=True
     )
     db.add(nova_receita)
@@ -49,6 +50,7 @@ async def update_receita(receita_id: int, request_body: ReceitaCreate, db: Async
     receita.date = request_body.date
     receita.time = request_body.time
     receita.ingredients = ingredientes
+    receita.category = request_body.category 
 
     await db.commit()
     await db.refresh(receita)

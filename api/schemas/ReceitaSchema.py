@@ -8,11 +8,13 @@ class ReceitaCreate(BaseModel):
     author: str
     date: date
     time: time
-    ingredients: Union[str, list[str]]  # <-- aceita string ou lista
+    ingredients: Union[str, list[str]]
+    category: str
 
 class ReceitaResponse(ReceitaCreate):
     id: int
     is_active: bool
+    category:str
 
     class Config:
-        from_attributes = True  # Pydantic v2
+        from_attributes = True

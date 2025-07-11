@@ -11,4 +11,5 @@ class Receita(Base):
     date = Column(Date)
     time = Column(Time)
     ingredients = Column(String)  # ou JSON, se quiser lista
+    category = Column(String)
     is_active = Column(Boolean, default=True)
