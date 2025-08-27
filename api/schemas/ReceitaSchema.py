@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import date, time
 from typing import Union
+from typing import Optional
 
 class ReceitaCreate(BaseModel):
     title: str
@@ -10,7 +11,7 @@ class ReceitaCreate(BaseModel):
     time: time
     ingredients: Union[str, list[str]]
     category: str
-    preparation: str
+    preparation: Optional[str] = ""
 
 class ReceitaResponse(ReceitaCreate):
     id: int
