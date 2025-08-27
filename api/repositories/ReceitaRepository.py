@@ -11,6 +11,12 @@ async def create_receita(request_body: ReceitaCreate, db: AsyncSession):
         else request_body.ingredients
     )
 
+    preparation = (
+        ", ".join(request_body.preparation)
+        if isinstance(request_body.preparation, list)
+        else request_body.preparation
+    )
+
     nova_receita = Receita(
         title=request_body.title,
         description=request_body.description,
@@ -18,6 +24,7 @@ async def create_receita(request_body: ReceitaCreate, db: AsyncSession):
         date=request_body.date,
         time=request_body.time,
         ingredients=ingredientes,
+        preparation=preparation,
         category=request_body.category,
         is_active=True
     )
@@ -44,12 +51,19 @@ async def update_receita(receita_id: int, request_body: ReceitaCreate, db: Async
         else request_body.ingredients
     )
 
+    preparation = (
+        ", ".join(request_body.preparation)
+        if isinstance(request_body.preparation, list)
+        else request_body.preparation
+    )
+
     receita.title = request_body.title
     receita.description = request_body.description
     receita.author = request_body.author
     receita.date = request_body.date
     receita.time = request_body.time
     receita.ingredients = ingredientes
+    receita.preparation = preparation
     receita.category = request_body.category 
 
     await db.commit()
