@@ -13,4 +13,4 @@ class Receita(Base):
     ingredients = Column(String)  # ou JSON, se quiser lista
     category = Column(String)
     is_active = Column(Boolean, default=True)
-    preparation = Column(Text)
+    preparation = Column(String)
