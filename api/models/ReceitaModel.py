@@ -1,4 +1,4 @@
-from sqlalchemy import JSON, Column, Integer, String, Boolean, Date, Time
+from sqlalchemy import JSON, Column, Integer, String, Boolean, Date, Time, Text
 from api.database import Base
 
 class Receita(Base):
@@ -13,3 +13,4 @@ class Receita(Base):
     ingredients = Column(String)  # ou JSON, se quiser lista
     category = Column(String)
     is_active = Column(Boolean, default=True)
+    preparation = Column(Text)

@@ -10,6 +10,7 @@ class ReceitaCreate(BaseModel):
     time: time
     ingredients: Union[str, list[str]]
     category: str
+    preparation: str
 
 class ReceitaResponse(ReceitaCreate):
     id: int
